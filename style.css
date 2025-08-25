@@ -1,0 +1,146 @@
+section {
+  max-width: 1170px;
+  margin: auto;
+  padding-top: 120px;
+
+  &:last-of-type {
+    padding-bottom: 120px;
+  }
+
+  @media (max-width: 1199px) {
+    max-width: 760px;
+  }
+
+  @media (max-width: 829px) {
+    max-width: calc(100% - 20px);
+  }
+}
+
+h2 {
+  font-family: "Delius Unicase", cursive;
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+ul {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(3, 370px);
+  gap: 30px;
+  grid-auto-rows: 370px;
+  font-family: Roboto, sans-serif;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: repeat(2, 370px);
+    grid-auto-rows: 400px;
+    gap: 20px;
+  }
+
+  @media (max-width: 829px) {
+    grid-template-columns: 100%;
+    gap: 10px;
+  }
+
+  li {
+    display: grid;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-content: space-between;
+    color: #fff;
+    overflow: hidden;
+    border-radius: 20px;
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, #241f24 0%, #5b5b5b73 34.11%, #bab9c042 62.5%);
+      transition: 0.4s;
+      pointer-events: none;
+    }
+
+    &::after {
+      background: linear-gradient(0deg, #241f24 1.04%, #5c5c5c42 6.99%, #bbbac000 12.29%);
+    }
+
+    @media (min-width: 1200px) {
+      &.wide {
+        grid-column: span 2;
+      }
+
+      &.tall {
+        grid-row: span 2;
+      }
+    }
+
+    button {
+      width: 40px;
+      height: 40px;
+      background-color: #E0E0E0;
+      border: none;
+      border-radius: 8px;
+      background-image: url(images/heart.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: 0.4s;
+
+      &:not(:hover) {
+        opacity: 0.5;
+      }
+
+
+      &.download {
+        margin-left: auto;
+        background-image: url(images/download.svg);
+      }
+    }
+
+    &:not(:hover) {
+      &::after {
+        opacity: 0;
+      }
+
+      button {
+        opacity: 0;
+      }
+    }
+
+    &:hover {
+      &::before {
+        opacity: 0;
+      }
+
+      img {
+        scale: 1.1;
+      }
+    }
+
+    img {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: 0.41s;
+      object-fit: cover;
+    }
+
+    span {
+      z-index: 1;
+      font-size: 20px;
+
+      &.date {
+        color: #e0e0e0;
+      }
+    }
+  }
+}
